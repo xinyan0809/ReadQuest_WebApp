@@ -45,6 +45,7 @@ coverage.xml
 cover/
 
 *.jpg
+!static/images/*.jpg
 
 ### IDEs ###
 .vscode/
