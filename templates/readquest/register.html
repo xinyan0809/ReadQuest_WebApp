@@ -1,0 +1,81 @@
+{% extends 'readquest/base_no-authenticate.html' %}
+{% load static %}
+
+{% block title_block %}
+Join ReadQuest
+{% endblock %}
+
+
+{% block body_block %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <section class="col-md-8 col-lg-5">
+            <div class="card card-custom p-4 p-md-5">
+                <div class="card-body p-0">
+
+                    <div class="d-flex align-items-center justify-content-center header-container">
+                        <img src="{% static 'images/logo.jpg' %}" alt="ReadQuest Logo" class="logo-img me-3">
+                        <h1 class="brand-title">Join ReadQuest</h1>
+                    </div>
+
+
+                    <!-- error message handling -->
+                    {% if error %}
+                    <div class="alert alert-danger text-center py-2 mb-3" role="alert">
+                       <p> {{ error }}</p>
+                    </div>
+                    {% endif %}
+
+                    <!-- form for registering -->
+                    <form id="user_form" method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="username" name="username"
+                                placeholder="User Name" required>
+                            <label for="username">User Name</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address"
+                                required>
+                            <label for="email">Email Address</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="Password" required>
+                            <label for="password">Password</label>
+                        </div>
+
+                        <div class="form-floating mb-1">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                                placeholder="Confirm Password" required>
+                            <label for="confirm_password">Confirm Password</label>
+                        </div>
+
+                        <div class="mb-4 ps-1">
+                            <small class="text-muted smaller_text">
+                                * Password must be at least 8 characters long.
+                            </small>
+                        </div>
+
+                        <button class="btn w-100 py-2 fs-6 text-white button" type="submit">
+                            Register Now
+                        </button>
+
+                        <div class="mt-4 text-center">
+                            <small class="text-muted">Already have an account? <a href="{% url 'readquest:index' %}"
+                                     class="text-decoration-none link">Log in
+                                    here</a></small>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,538 @@
+/* Global classes */
+
+.body-background {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.button {
+    transition: all 0.1s ease-in-out;
+    background-color: #F98410;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    font-family: "Inter", sans-serif;
+
+}
+
+.button:hover {
+    opacity: 0.9;
+    background-color: #F98410;
+    color: white !important;
+}
+
+.button:active {
+    background-color: #af671f !important;
+}
+
+
+.button_two {
+    padding: 8px 28px;
+    background-color: #af671f;
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+button:hover{
+        opacity: 0.9;
+
+}
+
+.button_two:not(:disabled):hover,
+.button_two:not(:disabled):focus,
+.button_two:not(:disabled):focus-visible,
+.button_two:not(:disabled):active {
+    background-color: #af671f !important;
+    color: white !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.button_two.added {
+    background-color: #4b1319;
+    color: white;
+}
+
+.button_two.wishlisted {
+    background-color: #8b4d13;
+    color: white;
+}
+
+
+
+h1 {
+    font-family: "Fraunces", sans-serif;
+    font-size: 35px;
+    color: #4b1319;
+    font-display: swap;
+}
+
+h2 {
+    font-family: "Fraunces", sans-serif;
+    font-size: 25px;
+    color: #4b1319;
+    font-display: swap;
+}
+
+h3 {
+    font-family: "Fraunces", sans-serif;
+    font-size: 22px;
+    color: #4b1319;
+    font-display: swap;
+}
+
+h4 {
+    font-family: "Fraunces", sans-serif;
+    font-size: 18px;
+    color: #4b1319 !important;
+    font-display: swap;
+}
+
+
+p {
+    font-family: "Inter", sans-serif;
+    font-display: swap;
+    color:#4b1319;
+}
+
+.orange_text{
+    font-size:0.8rem;
+    color:#af671f;
+
+}
+
+.smaller_text{
+    font-size:0.9em !important;
+}
+
+
+.base_cards {
+    background-color: #FFEBD7;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+.dark_card {
+    background-color: #d8c5b2;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border: none;
+
+}
+
+.book_modal_card {
+    background-color: #e4d5c6;
+}
+
+
+#addBookTabs .nav-link.active {
+    background-color: #e4d5c6;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.08);
+    border-style: solid solid none solid;
+
+}
+
+#addBookTabs .nav-link:not(.active) {
+    background-color: #d8c5b2;
+    color: grey;
+    border: white;
+}
+
+#addBookTabs .nav-link:hover {
+    color: your-colour;
+}
+
+
+/* Icons */
+
+.icon {
+    font-size: 60px;
+    font-display: swap;
+}
+
+.profile_icon {
+    font-size: 40px;
+    font-display: swap;
+
+}
+
+/* Navigation */
+
+.nav-item {
+    font-family: "Inter", sans-serif;
+    color: #4b1319 !important;
+
+}
+
+#search_btn {
+    color: #771F28;
+    border-color: #771F28;
+}
+
+#search_btn:hover {
+    background-color: #771F28;
+    color: white;
+}
+
+
+.navbar-toggler {
+    color: rgb(119, 31, 40);
+    border-color: #771F28;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(119, 31, 40)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+#search {
+    color: #771F28;
+    border-color: #4b1319;
+
+}
+
+#search:focus {
+    border-color: #4b1319;
+}
+
+.nav-item:hover {
+    color: #af671f;
+}
+
+
+/* Dropdown on profile pic */
+#profile_img {
+    padding-left: 10px;
+    color: #4b1319;
+    font-size: 40px;
+}
+
+#profile_img:hover {
+    padding-left: 10px;
+    background-color: #af671f;
+    color:white;
+}
+
+#myDropdown{
+    text-align: center !important;
+}
+
+#myDropdown:hover li{
+    text-align: center !important;
+    color:white !important;
+
+}
+
+a li.navbar-item:hover  {
+    background-color: #af671f;
+    color:white !important;
+}
+
+.nav-item{
+    text-decoration:none;
+}
+
+
+nav li:hover{
+        background-color: #af671f;
+    
+}
+
+#logo_auth_page {
+    height: 65px !important;
+}
+
+#logo_auth_page:hover {
+    box-shadow: 0 8px 24px rgba(180, 177, 177, 0.4);
+
+}
+
+
+.btn-dropdown {
+    border: none !important;
+}
+
+.btn.show {
+    border: none !important;
+    background-color: #FFEBD7;
+}
+
+
+#profileDropdown {
+    position: relative;
+    display:inline-block;
+}
+
+
+.dropDownItem a {
+    text-decoration: none !important;
+    color: #4b1319 !important;
+}
+
+.dropDownItem:hover a{
+    color: white !important;
+}
+
+.dropdown-menu {
+    background-color: #d8c5b2;
+    text-align: left;
+    line-height: 2rem;
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #c4af9a;
+    color: #4b1319;
+}
+
+/* Footer */
+
+#footer_logo {
+    height: 65px !important;
+    justify-content: right;
+}
+
+.footer-list {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-item a {
+    color: white !important;
+    list-style-type: none;
+    margin: 0;
+
+}
+
+footer p {
+    color:white;
+}
+
+footer hr{
+    color:white;
+
+}
+
+/* Front page */
+
+#front_image {
+    max-width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+}
+
+.like_button:hover {
+    transform: scale(1.2);
+}
+
+/* Login & Register Classes */
+
+.card-custom {
+    background-color: #FFEBD7;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+.header-container {
+    margin-bottom: 30px;
+}
+
+.logo-img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-title {
+    color: #6a2c28;
+    font-weight: 600;
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.form-floating>label {
+    color: #6c757d;
+}
+
+.link {
+    color: #F98410;
+    font-weight: 500;
+}
+
+
+/* Home page */
+.book_cover_home {
+    background: darkred;
+    object-fit: cover;
+    height: 260px;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+
+}
+
+.like_button{
+    float: right;
+    font-size: 30px;
+}
+
+.home_current_read{
+    background: darkred;
+    object-fit: cover;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+
+}
+
+/* Profile page */
+
+.book_cover_profile {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.book_cover_img {
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.book_cover_no_img {
+    width: 100%;
+    height: 130px;
+    background: #af671f;
+    border-radius: 6px;
+}
+
+.previous_read-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover !important;
+    border-radius: 6px;
+}
+
+.star-rating .star-icon {
+    font-size: 2rem;
+    color: #F98410;
+    cursor: pointer;
+}
+
+
+
+
+/* Search */
+.search_book_cover {
+    height: auto;
+    width: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #403227;
+}
+
+/* Badges */
+
+.badge-earned {
+    background-color: #F98410 !important;
+    color: white;
+}
+
+.badge-earned h4,
+.badge-earned i {
+    color: white !important;
+}
+
+.completed_goal{
+    color:#F98410;
+}
+
+/* Progress bars */
+.progress-bar {
+    --bs-progress-bar-bg: #f9ab10;
+    color: #4b1319;
+}
+
+.progress{
+    height:28px;
+    
+}
+
+/* Cookies */
+
+#cookie-decline-btn {
+    border: 1px solid #af671f;
+    color: #af671f;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.bi-check-circle-fill {
+    color: #F98410;
+}
+
+.cookies-box {
+    font-size: 0.82rem;
+    color: #5a3a2a;
+}
+
+#cookie-banner {
+    background-color: #FFEBD7;
+    border-top: 2px solid #f9ab10;
+    z-index: 9999;
+    display: none;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 1140px) {
+
+    #front_image {
+        margin-bottom: 1rem !important;
+        padding: 0;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .navbar-collapse {
+        background-color: #f8f9fa;
+        /* Custom background for the dropdown */
+        margin-top: 1rem;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    .navbar-collapse li {
+        margin-bottom: 2rem;
+    }
+
+    #search_nav {
+        width: 80%;
+        justify-content: center;
+        margin: auto;
+    }
+
+    #front_image {
+        margin-bottom: 1rem !important;
+        padding: 0;
+    }
+
+    .book_cover_home {
+    background: darkred;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+
+}
+
+}

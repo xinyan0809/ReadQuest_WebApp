@@ -1,0 +1,79 @@
+{% extends 'readquest/base_no-authenticate.html' %}
+{% load static %}
+
+
+{% block title_block %}
+Welcome
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+
+
+        <section class="col-xl-8">
+            <img src="{%static 'images/front_page_library.jpg'%}" class="col-xl-12" id="front_image"
+                alt="Image of books on bookshelves">
+        </section>
+
+        <!-- login section -->
+        <section class="col-xl-4 card-custom card-body p-4 text-center align-items-center ">
+            <div class="d-flex align-items-center justify-content-center p-4">
+
+                <img src="{% static 'images/logo.jpg' %}" alt="ReadQuest Logo" class="logo-img me-3">
+
+                <h1 class="brand-title">Welcome Back</h1>
+            </div>
+            <div class="align-items-center justify-content-center p-4">
+                <p class="text-center">ReadQuest will help you keep track of your reading progress.</p>
+            </div>
+
+            <!-- error handling -->
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger text-center py-2 mb-3 smaller_text" role="alert">
+                <p>{{message}}</p>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Login form -->
+            <form id="login_form" method="post" action="{% url 'readquest:login' %}">
+                {% csrf_token %}
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="User Name"
+                        required>
+                    <label for="username">User Name</label>
+                </div>
+
+                <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        required>
+                    <label for="password">Password</label>
+                </div>
+
+                <div class="form-check mb-2 text-start">
+                    <input class="form-check-input" type="checkbox" id="remember_me" name="remember_me">
+                    <label class="form-check-label text-muted smaller_text" for="remember_me">
+                        Remember me
+                    </label>
+                </div>
+
+                <button class="btn w-100 py-2 fs-6 text-white button" type="submit">
+                    Log In
+                </button>
+
+                <div class="mt-4 text-center">
+                    <small class="text-muted">Don't have an account? <a href="{% url 'readquest:register' %}"
+                            class="text-decoration-none link">Register here</a></small>
+                </div>
+            </form>
+
+        </section>
+
+    </div>
+</div>
+
+
+{% endblock %}

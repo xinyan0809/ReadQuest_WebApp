@@ -1,0 +1,31 @@
+{% load static %}
+{% load readquest_template_tags %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<!-- When user has not logged template -->
+
+<head>
+{% include 'readquest/head.html' %}
+{% include 'readquest/scripts.html' %}
+<title>ReadQuest -
+        {% block title_block %}
+
+        {% endblock %}
+</title>
+</head>
+
+
+<body class="body-background vh-100 vw-100 d-flex align-items-center justify-content-center">
+    <!-- Page specific content goes here -->
+
+    {% block body_block %}
+
+    {% endblock %}
+
+{% include 'readquest/cookie_banner.html' %}
+
+</body>
+{% include 'readquest/scripts.html' %}
+</html>

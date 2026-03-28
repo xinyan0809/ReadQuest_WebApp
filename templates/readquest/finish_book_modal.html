@@ -1,0 +1,33 @@
+
+<!-- Reviews model -->
+<section class="modal fade" id="finishBookModal{{ book.id }}" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content base_cards border-0">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="modal-title">Finished "{{ book.title }}"!</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center pt-2">
+                <p class="mb-3">How would you rate this book?</p>
+
+                <!-- Add star rating -->
+                <div class="star-rating mb-4" id="starRating{{ book.id }}">
+                    <i class="bi bi-star star-icon" data-value="1" onclick="selectStar(this, '{{ book.id }}')"></i>
+                    <i class="bi bi-star star-icon" data-value="2" onclick="selectStar(this, '{{ book.id }}')"></i>
+                    <i class="bi bi-star star-icon" data-value="3" onclick="selectStar(this, '{{ book.id }}')"></i>
+                    <i class="bi bi-star star-icon" data-value="4" onclick="selectStar(this, '{{ book.id }}')"></i>
+                    <i class="bi bi-star star-icon" data-value="5" onclick="selectStar(this, '{{ book.id }}')"></i>
+                </div>
+
+                <form method="post" action="{% url 'readquest:finish-book' book.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="rating" id="ratingInput{{ book.id }}" value="">
+                    <div class="d-flex justify-content-center gap-2">
+                        <button type="button" class="button_two" data-bs-dismiss="modal">Cancel</button>
+                        <button class="button_two" type="submit">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

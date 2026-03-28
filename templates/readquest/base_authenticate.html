@@ -1,0 +1,143 @@
+{% load static %}
+{% load readquest_template_tags %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<!-- When user has logged in base template -->
+
+<head>
+    {% include 'readquest/head.html' %}
+    {% include 'readquest/scripts.html' %}
+
+    <title>ReadQuest -
+        {% block title_block %}
+
+        {% endblock %}
+    </title>
+</head>
+
+
+<body class="body-background d-flex flex-column min-vh-100">
+    <header>
+
+        <!-- To make the navbar background full width -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+            <!-- To make the navbar content stay in the middle -->
+            <div class="container">
+
+                <a href="{% url 'readquest:home' %}"> <img src="{% static 'images/logo.jpg' %}" alt="ReadQuest Logo"
+                        id="logo_auth_page" class="navbar-brand p-2"></a>
+
+                <!-- Mobile menu -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse justify-content-end mr-2" id="navbarNavAltMarkup">
+
+                     <!-- Search bar mobile -->
+                    <div id="search_nav" class="navbar-nav d-lg-none mb-5">
+                        <form class="d-flex align-items-center me-2  ml-5"
+                            action="{% url 'readquest:catalogue_book-search' %}" method="get">
+                            <input class="form-control me-2" id="search" type="search" name="q"
+                                placeholder="Search for books" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit" id="search_btn">Search</button>
+                        </form>
+                    </div>
+
+
+                    <!-- Main navbar -->
+                    <ul class="mb-lg-0 navbar-nav">
+                        <a id="nav-home" href="{% url 'readquest:home' %}"
+                                class="nav-item"><li class="p-4 navbar-item">Home</li></a>
+                        <a href="{% url 'readquest:profile' %}" class="nav-item"><li class="p-4 navbar-item">Profile
+                        </li>
+                        <a href="{% url 'readquest:goals' %}" class=" nav-item"><li class="p-4 navbar-item">Goals
+                        </li></a>
+                        </li>
+                     <a href="{% url 'readquest:catalogue_book-search' %}"
+                                class="nav-item">   <li class="p-4 navbar-item">Catalogue</li></a>
+                    </ul>
+
+                    <!-- Search bar desktop -->
+                    <div id="search_nav" class="d-none d-lg-block">
+                        <form class="d-flex align-items-center me-2  ml-5"
+                            action="{% url 'readquest:catalogue_book-search' %}" method="get">
+                            <input class="form-control me-2" id="search" type="search" name="q"
+                                placeholder="Search for books" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit" id="search_btn">Search</button>
+                        </form>
+                    </div>
+
+                    <!-- Mobile logout link -->
+                    <ul class="navbar-nav d-lg-none">
+                        <li class="p-4 navbar-item"><a href="{% url 'readquest:logout' %}" class="nav-item">Logout</a>
+                        </li>
+                    </ul>
+
+                    <!-- Dropdown on profie picture , using bootstrap toggles, only visable on desktop-->
+                    <div class="dropdown d-none d-lg-block">
+                        <i class="bi bi-person-circle btn btn-dropdown" alt="Profile icon" id="profile_img"
+                            onhover="toggleDropdown()" class="" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                        <div id="myDropdown" class="dropdown-menu dropdown-menu-end">
+                            <li class="dropDownItem"><a href="{% url 'readquest:logout' %}">Logout</a></li>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container pt-4 mb-4">
+        <!-- Page specific content goes here -->
+        {% block body_block %}
+
+        {% endblock %}
+    </div>
+
+
+    <!-- Footer -->
+    <!-- To make footer background full width -->
+    <footer class="bg-dark p-4 mt-auto footer-expand-lg">
+
+        <!-- to make footer content stay in the middle -->
+        <div class="container">
+            <div class="d-flex col-12 p-2 justify-content-between">
+                <div class="col-10">
+                    <div>
+                        <p> If you need any additional information about Readquest</p>
+                        <hr class="my-4">
+                    </div>
+
+                    <div>
+                        <ul class="d-flex footer-list float-start">
+                            <li class="footer-item pe-4 pt-1"><a id="nav-home" href="{% url 'readquest:home' %}"
+                                    class="text-decoration-none">Home</a></li>
+                            <li class="footer-item pe-4 ps-4 pt-1"><a href="{% url 'readquest:profile' %}"
+                                    class="text-decoration-none">Profile</a></li>
+                            <li class="footer-item pe-4 ps-4 pt-1"><a href="{% url 'readquest:goals' %}"
+                                    class="text-decoration-none">Goals</a></li>
+                            <li class="footer-item pe-4 ps-4 pt-1"><a href="{% url 'readquest:catalogue_book-search' %}"
+                                    class="text-decoration-none">Catalogue</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-1">
+                    <a href="{% url 'readquest:home' %}">
+                        <img src="{% static 'images/logo_white.png' %}" alt="ReadQuest Logo" id="footer_logo"
+                            class="p-2">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% include 'readquest/cookie_banner.html' %}
+</body>
+
+</html>

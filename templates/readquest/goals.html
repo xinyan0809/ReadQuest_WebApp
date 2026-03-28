@@ -1,0 +1,121 @@
+{% extends 'readquest/base_authenticate.html' %}
+{% load static %}
+
+{% block title_block %}
+Goals
+{% endblock %}
+
+
+{% block body_block %}
+<!-- Title and add new goal -->
+<section class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Your goals</h1>
+    <button class="button btn p-2" data-bs-toggle="modal" data-bs-target="#addGoalModal">Add new goal +</button>
+    {% include 'readquest/add_goal.html' %}
+</section>
+
+
+<div class="container p-0">
+    <div class="row mt-2 p-0 g-4">
+
+        <!-- Current goals -->
+        <section class="col-12">
+            <div class="p-4 base_cards">
+                <h2 class="mb-3">Current goal</h2>
+                <div class="d-flex row g-3">
+                    {% for goal in goals %}
+                    <div class="dark_card p-4">
+                        <div class="col-12">
+                            <h3 class="mb-1">{{ goal.title_goal }}</h3>
+                            <p class="mb-2 text-muted">{{ goal.books_read }} of {{ goal.books }} books read</p>
+                            <div class="progress mb-2" style="height: 28px;">
+
+                                <!-- updates the progress bar depending on the user progress -->
+                                <div class="progress-bar" role="progressbar"
+                                    style="width: {{ goal.progress }}%;"
+                                    aria-valuenow="{{ goal.progress }}"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    {{ goal.progress|floatformat:0 }}%
+                                    
+                                </div>
+                            </div>
+                             <p class="mb-0 orange_text">
+                                Started {{ goal.created_at|date:"d M Y" }}
+                            </p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted mt-2">No active goal. Head to your profile to set one.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Completed goals -->
+        <section class="col-12">
+            <div class="p-4 base_cards">
+                <h2 class="mb-3">Completed goals</h2>
+                <div class="d-flex row g-3">
+
+                    <!-- loading in all the completed goals -->
+                    {% for goal in completed_goals %}
+                    <div class="dark_card p-4">
+                        <div class="col-12 d-flex justify-content-between align-items-start">
+                            <div>
+                                <h3 class="mb-1">{{ goal.title_goal }}</h3>
+                                <p class="mb-1 text-muted">{{ goal.books }} books &nbsp;·&nbsp; {{ goal.books_read }} read</p>
+                                <p class="mb-0">
+                                    Completed {{ goal.completed_at|date:"d M Y" }}
+                                </p>
+                            </div>
+                            <i class="bi bi-check-circle-fill fs-2 completed_goal"></i>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted">No completed goals yet — keep reading!</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Badges -->
+
+    <section class="mt-4 p-4 base_cards">
+        <h2 class="mb-3">Badges</h2>
+        <div class="row g-3 mt-4">
+
+            <!-- Box for each badge  -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="dark_card d-flex flex-column justify-content-center align-items-center p-3 h-100{% if badge_read_10 %} badge-earned{% endif %}">
+                    <i class="bi bi-postcard fs-2 mb-2"></i>
+                    <h4 class="text-center mb-0">Read 10 books</h4>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="dark_card d-flex flex-column justify-content-center align-items-center p-3 h-100{% if badge_first_goal %} badge-earned{% endif %}">
+                    <i class="bi bi-trophy fs-2 mb-2"></i>
+                    <h4 class="text-center mb-0">Finish first goal</h4>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="dark_card d-flex flex-column justify-content-center align-items-center p-3 h-100{% if badge_harry_potter %} badge-earned{% endif %}">
+                    <i class="bi bi-magic fs-2 mb-2"></i>
+                    <h4 class="text-center mb-0">Read a Harry Potter book</h4>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="dark_card d-flex flex-column justify-content-center align-items-center p-3 h-100{% if badge_wishlist %} badge-earned{% endif %}">
+                    <i class="bi bi-bookmark-heart fs-2 mb-2"></i>
+                    <h4 class="text-center mb-0">Have 5 books in wishlist</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

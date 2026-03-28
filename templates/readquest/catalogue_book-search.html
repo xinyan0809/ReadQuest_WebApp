@@ -1,0 +1,102 @@
+{% extends 'readquest/base_authenticate.html' %}
+{% load static %}
+
+{% block title_block %}
+Catalogue
+{% endblock %}
+
+{% block body_block %}
+
+<h1>Catalogue</h1>
+
+<!-- Search bar -->
+<section class="mb-4 mt-4 col-md-6 col-12">
+    <form action="{% url 'readquest:catalogue_book-search' %}" method="get" class="d-flex gap-2">
+        <input type="search" class="form-control" name="q" placeholder="Search for a book">
+        <button type="submit" class="button btn btn-primary col-3">Search</button>
+    </form>
+</section>
+
+
+<!-- Search results -->
+<section>
+
+    <!-- Show the book that users have searched for -->
+    {% if query %}
+    <h3 id="results-title">Search results for {{ query }}</h3>
+    {% endif %}
+
+
+    <div class="row g-3 mt-2">
+
+        <!-- Show the books in the results, limits to 10 -->
+        {% for book in results %}
+        <div class="col-12 col-md-6">
+            <div class="dark_card p-3 d-flex align-items-center">
+                <div class="me-3 flex-shrink-0">
+                    <img class="search_book_cover" src="{{ book.cover_image }}" alt="Book cover for {{ book.title }}"
+                        onerror="this.style.visibility='hidden'">
+                </div>
+                <div class="d-flex flex-column">
+                    <h4 class="mb-1">{{ book.title }}</h4>
+                    <p class="mb-1">{{ book.author }}</p>
+                    <p class="mb-3">{{ book.pages|default:'?' }} pages</p>
+
+
+                    <!-- Add book dropdown -->
+                    <div class="dropdown">
+                        {% if book.is_in_reading %}
+                        <button class="btn button_two added" disabled>Reading</button>
+                        {% else %}
+                        <button class="btn button_two {% if book.is_in_wishlist %}wishlisted{% endif%}" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            
+                            <!-- for interaction when book is in wishlist -->
+                            {% if book.is_in_wishlist %}
+                            Wishlisted 
+                            {% else %}
+                            Add
+                            {% endif %}
+
+                        </button>
+                        {% endif %}
+
+                        <!-- the dropdown menus -->
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form method="post" action="{% url 'readquest:add-to-reading' %}"
+                                    class="add-to-reading">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="ol_key" value="{{ book.ol_key }}">
+                                    <input type="hidden" name="title" value="{{ book.title }}">
+                                    <input type="hidden" name="author" value="{{ book.author }}">
+                                    <input type="hidden" name="pages" value="{{ book.pages }}">
+                                    <input type="hidden" name="cover_url" value="{{ book.cover_image }}">
+                                    <button class="dropdown-item" type="submit">Add to current read</button>
+                                </form>
+                            </li>
+                            {% if not book.is_in_wishlist %}
+                            <li>
+                                <form method="post" action="{% url 'readquest:add-to-wishlist' %}"
+                                    class="add-to-wishlist">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="ol_key" value="{{ book.ol_key }}">
+                                    <input type="hidden" name="title" value="{{ book.title }}">
+                                    <input type="hidden" name="author" value="{{ book.author }}">
+                                    <input type="hidden" name="pages" value="{{ book.pages }}">
+                                    <input type="hidden" name="cover_url" value="{{ book.cover_image }}">
+                                    <button class="dropdown-item" type="submit">Add to wishlist</button>
+                                </form>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+        {% if query %}<p>No results found.</p>{% endif %}
+        {% endfor %}
+        
+</section>
+{% endblock %}
